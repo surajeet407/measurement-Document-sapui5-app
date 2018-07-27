@@ -1,0 +1,138 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.sap.aiirdit_MC.controller.MeasurementCreation" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page id="detail" title="{i18n>sap.ui.airdit.measuring.title}">
+				<content>
+					<VBox class="sapUiSmallMargin">
+						<f:SimpleForm id="measurementForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+							labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="2"
+							singleContainerFullSize="false">
+							<f:content>
+								<core:Title text=""/>
+								<Label text="{i18n>sap.ui.airdit.measuringpoint}" labelFor="measuringPoint"/>
+								<Input id="measuringPointInput" visible="false" value="{data1>/name/measPoint}" showValueHelp="true" valueHelpRequest="handleValueHelpRequest" required="true">
+									<layoutData>
+										<l:GridData span="XL8 L8 M8 S12"/>
+									</layoutData>
+								</Input>
+								<ComboBox id="measuringPointComboBox" items="{data>/}" change="onChangeHandler">
+									<core:Item key="{data>type}" text="{data>name}"/>
+									<layoutData>
+										<l:GridData span="XL8 L8 M8 S12"/>
+									</layoutData>
+								</ComboBox>
+								<core:Title text=""/>
+								<Label text="{i18n>sap.ui.airdit.measuringdate}"/>
+								<DatePicker id="datePicker" valueFormat="yyyy-MM-dd" displayFormat="long" change="handleChangeForDate"></DatePicker>
+								<TimePicker id="timePicker" valueFormat="hh:mm a" displayFormat="hh:mm a" change="handleChangeForTime" placeholder="Enter Time"></TimePicker>
+							</f:content>
+						</f:SimpleForm>
+					</VBox>
+					<VBox class="sapUiSmallMargin">
+						<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="{i18n>sap.ui.airdit.tableTitle}" labelSpanXL="4" labelSpanL="4"
+							labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2"
+							columnsL="1" columnsM="2" singleContainerFullSize="false">
+							<f:content>
+								<core:Title text=""/>
+								<Label text="{i18n>sap.ui.airdit.measurementPoint}"/>
+								<Input id="measPointInput" editable="false" value="{data1>/name/measPoint}">
+									<layoutData>
+										<l:GridData span="XL4 L4 M4 S6"/>
+									</layoutData>
+								</Input>
+								<Text text="Cat. Meas. Point General" wrapping="false">
+									<layoutData>
+										<l:GridData span="XL4 L4 M4 S6"/>
+									</layoutData>
+								</Text>
+								<Label text="{i18n>sap.ui.airdit.measurementPosition}"/>
+								<Input editable="false" value="{data1>/name/measPos}">
+									<layoutData>
+										<l:GridData span="XL4 L4 M4 S6"/>
+									</layoutData>
+								</Input>
+								<Text text="Lorem ipsum dolor sit amet" wrapping="false">
+									<layoutData>
+										<l:GridData span="XL4 L4 M4 S6"/>
+									</layoutData>
+								</Text>
+								<Label text="{i18n>sap.ui.airdit.mearTime}"/>
+								<DatePicker id="datePicker1" valueFormat="yyyy-MM-dd" displayFormat="long" change="handleChangeForDate">
+									<layoutData>
+										<l:GridData span="XL4 L4 M4 S12"/>
+									</layoutData>
+								</DatePicker>
+								<TimePicker id="timePicker1" valueFormat="hh:mm a" displayFormat="hh:mm a" change="handleChangeForTime" placeholder="Enter Time">
+									<layoutData>
+										<l:GridData span="XL4 L4 M4 S12"/>
+									</layoutData>
+								</TimePicker>
+								<Label text="{i18n>sap.ui.airdit.meardoc}" wrapping="false"/>
+								<Input editable="false" value="{data1>/name/measDoc}"></Input>
+								<Label text="{i18n>sap.ui.airdit.car}"/>
+								<Input value="{data1>/name/char}" editable="false"></Input>
+								<Label text="{i18n>sap.ui.airdit.charUnit}"/>
+								<Input value="{data1>/name/charUnit}" editable="false"></Input>
+								<Label text="{i18n>sap.ui.airdit.remark}"/>
+								<TextArea value="Lorem ipsum dolor sit amet"></TextArea>
+								<core:Title text=""/>
+								<Label text="{i18n>sap.ui.airdit.measdocCheck.title}">
+									<layoutData>
+										<l:GridData span="XL11 L11 M11 S11"/>
+									</layoutData>
+								</Label>
+								<CheckBox>
+									<layoutData>
+										<l:GridData span="XL1 L1 M1 S1"/>
+									</layoutData>
+								</CheckBox>
+								<Label text="{i18n>sap.ui.airdit.totalCounterReading}" wrapping="false"/>
+								<Input value="{data1>/name/tcr}" editable="false"></Input>
+								<Label text="{i18n>sap.ui.airdit.counterReading}" labelFor="counterReading"/>
+								<Input id="counterReading" value="" required="true"></Input>
+								<Label text="{i18n>sap.ui.airdit.diff}" labelFor="difference"/>
+								<Input id="difference" value="" required="true"></Input>
+								<Label text="{i18n>sap.ui.airdit.valuationCode}"/>
+								<ComboBox items="{data1>name/valueCode}">
+									<core:Item key="{data1>name/}" text="{text}"/>
+								</ComboBox>
+								<Label text="{i18n>sap.ui.airdit.mFLTitle}"/>
+								<Input value="{data1>/name/funcLoc}"></Input>
+								<Label text="{i18n>sap.ui.airdit.desc}"/>
+								<TextArea value="desc"></TextArea>
+							</f:content>
+						</f:SimpleForm>
+					</VBox>
+					<VBox class="sapUiSmallMargin">
+						<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="{i18n>sap.ui.airdit.meardoc.AddInfo}" labelSpanXL="4" labelSpanL="4"
+							labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2"
+							columnsL="1" columnsM="2" singleContainerFullSize="false">
+							<f:content>
+								<core:Title text=""/>
+								<Label text="{i18n>sap.ui.airdit.readBy}"></Label>
+								<Text text="{data1>/name/readBy}"></Text>
+								<core:Title text=""/>
+								<Label text="{i18n>sap.ui.airdit.processStatus}"/>
+								<ComboBox items="{path: ''}">
+									<core:Item key="{key}" text="{text}"/>
+								</ComboBox>
+							</f:content>
+						</f:SimpleForm>
+					</VBox>
+				</content>
+				<footer>
+					<Bar>
+						<contentLeft>
+							<Label id="oLabel" design="Bold"/>
+						</contentLeft>
+						<contentRight>
+							<Button text="{i18n>sap.ui.airdit.measurementCreationPage.btnText}" type="Transparent" press="handleSavePress"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
